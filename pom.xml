@@ -5,7 +5,7 @@
 
 	<groupId>com.latitude</groupId>
 	<artifactId>validator</artifactId>
-	<version>1.0.RELEASE</version>
+	<version>1.0.1.BUILD-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<developers>
@@ -39,7 +39,7 @@
 
 	<scm>
 		<developerConnection>scm:git:https://github.com/latitude-oss/validator.git</developerConnection>
-		<tag>v1.0.0.RC</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<build>

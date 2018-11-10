@@ -6,11 +6,11 @@
 	<parent>
 		<groupId>com.latitude</groupId>
 		<artifactId>validator</artifactId>
-		<version>1.0.RELEASE</version>
+		<version>1.0.1.BUILD-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>validator-core</artifactId>
-	<version>1.0.0.RC</version>
+	<version>1.0.1.BUILD-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<dependencies>
