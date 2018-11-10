@@ -7,7 +7,7 @@
 
 	<groupId>com.latitude</groupId>
 	<artifactId>validator</artifactId>
-	<version>1.0.0.BUILD-SNAPSHOT</version>
+	<version>1.0.RELEASE</version>
 	<packaging>pom</packaging>
 
 	<developers>
