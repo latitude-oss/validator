@@ -4,7 +4,7 @@
 	<name>Validator SpringFramework autoconfigure</name>
 
 	<parent>
-		<groupId>com.latitude</groupId>
+		<groupId>cloud.latitude</groupId>
 		<artifactId>validator</artifactId>
 		<version>1.0.1.BUILD-SNAPSHOT</version>
 	</parent>
@@ -15,7 +15,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.latitude</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>validator-core</artifactId>
 			<version>1.0.1.BUILD-SNAPSHOT</version>
 		</dependency>

@@ -3,7 +3,7 @@
 
 	<name>Validator</name>
 
-	<groupId>com.latitude</groupId>
+	<groupId>cloud.latitude</groupId>
 	<artifactId>validator</artifactId>
 	<version>1.0.1.BUILD-SNAPSHOT</version>
 	<packaging>pom</packaging>
