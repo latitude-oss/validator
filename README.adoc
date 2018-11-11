@@ -3,3 +3,17 @@
 image:https://badges.gitter.im/latitude-oss-validator/Lobby.svg[link="https://gitter.im/latitude-oss-validator/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"] image:https://img.shields.io/badge/License-Apache%202.0-blue.svg[link="https://opensource.org/licenses/Apache-2.0"]
 
 Validator defines a straigthforward Java api for bean validation.
+
+Data validation is a very common task that often is scattered in many different layers of an application. Some times the same validation criteria are implemented more than once, proving time consuming and error-prone.
+
+This library defines a meta-data model and API for bean validation.
+
+## Requirements
+*Java 6* or later is required.
+
+## Releases
+Releases can be found in the https://github.com/latitude-oss/validator/releases[Github releases tab].
+
+## Links
+* https://github.com/latitude-oss/validator[Project page]
+* https://github.com/latitude-oss/validator/issues[Issue tracking]
