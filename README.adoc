@@ -19,7 +19,8 @@ The main library defines the meta-data model and provides the core features thro
  * The *_ValidationEngine_* class that acts as an entry point to perform the validation
  * The *_Validator_* interface that defines the contract to implement the custom validator components.
 
-Add the _**validator-core**_ dependency in your maven project's pom as shown below
+Add the **validator-core** dependency in your maven project's pom as shown below
+
 [source,xml,indent=2]
 ----
     <dependency>
@@ -32,12 +33,13 @@ Add the _**validator-core**_ dependency in your maven project's pom as shown bel
 [source,java,indent=2]
 ----
 
+package com.example;
+
 import com.latitude.validator.spi.ValidationContext;
 import com.latitude.validator.spi.ValidationException;
 import com.latitude.validator.spi.ValidationOperations;
 import com.latitude.validator.spi.impl.AbstractGenericValidator
 import com.latitude.validator.spi.impl.ValidationEngine;
-
 
 public class Application {
 
@@ -89,6 +91,16 @@ public class Application {
 Integrates the *validation-core* library inside a *SpringFramework* IOC container.
 
 Provides auto-configuration features and classpath scanning for _Validator_ components. 
+
+Add the _**validator-spring-autoconfigure**_ dependency in your maven project's pom as shown below
+[source,xml,indent=2]
+----
+    <dependency>
+        <groupId>cloud.latitude</groupId>
+        <artifactId>validator-spring-autoconfigure</artifactId>
+        <version>${version}</version>
+    </dependency>
+----
 
 [source,java,indent=2]
 ----
@@ -153,16 +165,6 @@ public class Application {
 
 }
 
-----
-
-Add the _**validator-spring-autoconfigure**_ dependency in your maven project's pom as shown below
-[source,xml,indent=2]
-----
-    <dependency>
-        <groupId>cloud.latitude</groupId>
-        <artifactId>validator-spring-autoconfigure</artifactId>
-        <version>${version}</version>
-    </dependency>
 ----
 
 == Requirements
