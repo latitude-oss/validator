@@ -1,4 +1,4 @@
-# Validator 
+= Validator 
 
 image:https://badges.gitter.im/latitude-oss-validator/Lobby.svg[link="https://gitter.im/latitude-oss-validator/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"] image:https://img.shields.io/badge/License-Apache%202.0-blue.svg[link="https://opensource.org/licenses/Apache-2.0"]
 
@@ -8,12 +8,172 @@ Data validation is a very common task that often is scattered in many different 
 
 This library defines a meta-data model and API for bean validation.
 
-## Requirements
+== Modules
+
+There are more modules in Validator, below a quick overview:
+
+=== validator-core
+
+The main library defines the meta-data model and provides the core features through:
+
+ * The *_ValidationEngine_* class that acts as an entry point to perform the validation
+ * The *_Validator_* interface that defines the contract to implement the custom validator components.
+
+Add the _**validator-core**_ dependency in your maven project's pom as shown below
+[source,xml,indent=2]
+----
+    <dependency>
+        <groupId>cloud.latitude</groupId>
+        <artifactId>validator-core</artifactId>
+        <version>${version}</version>
+    </dependency>
+----
+
+[source,java,indent=2]
+----
+
+import com.latitude.validator.spi.ValidationContext;
+import com.latitude.validator.spi.ValidationException;
+import com.latitude.validator.spi.ValidationOperations;
+import com.latitude.validator.spi.impl.AbstractGenericValidator
+import com.latitude.validator.spi.impl.ValidationEngine;
+
+
+public class Application {
+
+    private static ValidationOpeartions validationEngine = new ValidationEngine();
+
+    public static void main(String[] args){
+        validationEngine.addValidator(new FooValidator());
+        validationEngine.validate(new Foo("EXPECTED_FOO"));
+    }
+
+    public static class FooValidator extends AbstractGenericValidator<Foo> {
+    
+        public FooValidator(){
+            super("FooValidator");
+        }
+        
+        public boolean doSupports(Object subject){
+            return Foo.class.isAssignableFrom(subject.getClass());   
+        }
+    
+        public void doValidation(Foo subject, ValidationContext context) {
+            if(!"EXPECTED_FOO".equals(subject.getName()){
+                throw new ValidationException("Invalid Foo provided");
+            }
+        }
+    
+    }
+
+    public static class Foo {
+        
+        private final String name;
+        
+        public Foo(String name){
+            this.name = name;
+        }
+        
+        public String getName(){
+            return this.name;
+        }
+        
+    }
+
+}
+
+----
+
+=== validator-spring-autoconfigure
+
+Integrates the *validation-core* library inside a *SpringFramework* IOC container.
+
+Provides auto-configuration features and classpath scanning for _Validator_ components. 
+
+[source,java,indent=2]
+----
+
+package com.example;
+
+import com.latitude.validator.spi.ValidationContext;
+import com.latitude.validator.spi.ValidationException;
+import com.latitude.validator.spi.ValidationOperations;
+import com.latitude.validator.spi.impl.AbstractGenericValidator
+import com.latitude.validator.spi.impl.ValidationEngine;
+
+import org.springframework.boot.*;
+import org.springframework.boot.autoconfigure.*;
+
+@SpringBootApplication
+public class Application {
+
+    @Autowired
+    private ValidationOpeartions validationEngine;
+
+    public static void main(String[] args){
+        SpringApplication.run(ApplicationConfiguration.class, args);        
+    }
+
+    @EnableValidation(scanValidators = true, validatorsPackages = {"com.example"})
+    public static class ApplicationConfiguration {
+    
+    }
+
+    public static class FooValidator extends AbstractGenericValidator<Foo> {
+    
+        public FooValidator(){
+            super("FooValidator");
+        }
+        
+        public boolean doSupports(Object subject){
+            return Foo.class.isAssignableFrom(subject.getClass());   
+        }
+    
+        public void doValidation(Foo subject, ValidationContext context) {
+            if(!"EXPECTED_FOO".equals(subject.getName()){
+                throw new ValidationException("Invalid Foo provided");
+            }
+        }
+    
+    }
+
+    public static class Foo {
+        
+        private final String name;
+        
+        public Foo(String name){
+            this.name = name;
+        }
+        
+        public String getName(){
+            return this.name;
+        }
+        
+    }
+
+}
+
+----
+
+Add the _**validator-spring-autoconfigure**_ dependency in your maven project's pom as shown below
+[source,xml,indent=2]
+----
+    <dependency>
+        <groupId>cloud.latitude</groupId>
+        <artifactId>validator-spring-autoconfigure</artifactId>
+        <version>${version}</version>
+    </dependency>
+----
+
+== Requirements
 *Java 6* or later is required.
 
-## Releases
+== Releases
 Releases can be found in the https://github.com/latitude-oss/validator/releases[Github releases tab].
 
-## Links
+== Links
 * https://github.com/latitude-oss/validator[Project page]
 * https://github.com/latitude-oss/validator/issues[Issue tracking]
+
+== License
+Validator is Open Source software released under the http://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].
