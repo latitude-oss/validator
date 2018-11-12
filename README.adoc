@@ -4,22 +4,22 @@ image:https://badges.gitter.im/latitude-oss-validator/Lobby.svg[link="https://gi
 
 Validator defines a straigthforward Java api for bean validation.
 
-Data validation is a very common task that often is scattered in many different layers of an application. Some times the same validation criteria are implemented more than once, proving time consuming and error-prone.
+Data validation is a very common task that often is scattered in many different layers of an application. Some times the same validation criteria are implemented more than once, this can be time consuming and error-prone.
 
 This library defines a meta-data model and API for bean validation.
 
 == Modules
 
-There are more modules in Validator, below a quick overview:
+There are more modules in the project, below a quick overview:
 
 === validator-core
 
 The main library defines the meta-data model and provides the core features through:
 
  * The *_ValidationEngine_* class that acts as an entry point to perform the validation
- * The *_Validator_* interface that defines the contract to implement the custom validator components.
+ * The *_Validator_* interface that defines the contract to implement custom validator components.
 
-Add the **validator-core** dependency in your maven project's pom as shown below
+First, add the **validator-core** dependency in your maven project's pom as shown below.
 
 [source,xml,indent=2]
 ----
@@ -29,6 +29,8 @@ Add the **validator-core** dependency in your maven project's pom as shown below
         <version>${version}</version>
     </dependency>
 ----
+
+Here a little example to embed validation-core in a Java application.
 
 [source,java,indent=2]
 ----
@@ -101,6 +103,8 @@ Add the _**validator-spring-autoconfigure**_ dependency in your maven project's 
         <version>${version}</version>
     </dependency>
 ----
+
+Here a little example that integrates validation-core in a SpringBoot application. 
 
 [source,java,indent=2]
 ----
