@@ -92,7 +92,8 @@ public class ValidationEngine implements ValidationOperations {
     /*
      * (non-Javadoc)
      * 
-     * @see it.gse.engine.spi.ValidationOperations#validate(java.lang.Object)
+     * @see com.latitude.validator.spi.ValidationOperations#validate(java.lang.Object,
+     * com.latitude.validator.spi.ValidationExecutionCallback)
      */
     @Override
     public ValidationContext validate(Object subject, ValidationExecutionCallback callback) {

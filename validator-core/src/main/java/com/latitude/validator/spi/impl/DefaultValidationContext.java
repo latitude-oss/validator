@@ -72,7 +72,7 @@ public class DefaultValidationContext extends HashMap<String, Object> implements
     /*
      * (non-Javadoc)
      * 
-     * @see it.gse.engine.spi.validation.ValidationContext#putValue(java.lang.String, java.lang.Object)
+     * @see com.latitude.validator.spi.ValidationContext#putValue(java.lang.String, java.lang.Object)
      */
     @Override
     public void putValue(String name, Object value) {
@@ -82,7 +82,7 @@ public class DefaultValidationContext extends HashMap<String, Object> implements
     /*
      * (non-Javadoc)
      * 
-     * @see it.gse.engine.spi.validation.ValidationContext#tryResolveValue(java.lang.String, java.lang.Class)
+     * @see com.latitude.validator.spi.ValidationContext#tryResolveValue(java.lang.String, java.lang.Class)
      */
     @Override
     public <T> Optional<T> tryResolveValue(String name, Class<T> expectedType) {
