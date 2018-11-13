@@ -2,7 +2,7 @@
 
 The main library defines the meta-data model and provides the core features through:
 
- * The *_ValidationEngine_* class that acts as an entry point to perform the validation
+ * The *_ValidationEngine_* class that acts as an entry point to perform the validation.
  * The *_Validator_* interface that defines the contract to implement custom validator components.
 
 First, add the **validator-core** dependency in your maven project's pom as shown below.
