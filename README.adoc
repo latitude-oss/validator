@@ -10,7 +10,7 @@ Data validation is a very common task that often is scattered in many different 
 
 There are more modules in the project, below a quick overview:
 
-* *validator-core* - the core library that provides the core features 
+* *validator-core* - the library that provides core features.
 * *validator-spring-autoconfigure* - integrates the core library in a *SpringFramework* IOC container.  
 
 == Requirements
