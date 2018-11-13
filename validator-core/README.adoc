@@ -1,0 +1,75 @@
+= Validator Core
+
+The main library defines the meta-data model and provides the core features through:
+
+ * The *_ValidationEngine_* class that acts as an entry point to perform the validation.
+ * The *_Validator_* interface that defines the contract to implement custom validator components.
+
+First, add the **validator-core** dependency in your maven project's pom as shown below.
+
+[source,xml,indent=2]
+----
+    <dependency>
+        <groupId>cloud.latitude</groupId>
+        <artifactId>validator-core</artifactId>
+        <version>${version}</version>
+    </dependency>
+----
+
+Here a little example to embed validation-core in a Java application.
+
+[source,java,indent=2]
+----
+
+package com.example;
+
+import com.latitude.validator.spi.ValidationContext;
+import com.latitude.validator.spi.ValidationException;
+import com.latitude.validator.spi.ValidationOperations;
+import com.latitude.validator.spi.impl.AbstractGenericValidator
+import com.latitude.validator.spi.impl.ValidationEngine;
+
+public class Application {
+
+    private static ValidationOpeartions validationEngine = new ValidationEngine();
+
+    public static void main(String[] args){
+        validationEngine.addValidator(new FooValidator());
+        validationEngine.validate(new Foo("EXPECTED_FOO"));
+    }
+
+    public static class FooValidator extends AbstractGenericValidator<Foo> {
+    
+        public FooValidator(){
+            super("FooValidator");
+        }
+        
+        public boolean doSupports(Object subject){
+            return Foo.class.isAssignableFrom(subject.getClass());   
+        }
+    
+        public void doValidation(Foo subject, ValidationContext context) {
+            if(!"EXPECTED_FOO".equals(subject.getName()){
+                throw new ValidationException("Invalid Foo provided");
+            }
+        }
+    
+    }
+
+    public static class Foo {
+        
+        private final String name;
+        
+        public Foo(String name){
+            this.name = name;
+        }
+        
+        public String getName(){
+            return this.name;
+        }
+        
+    }
+
+}
+
+----

@@ -1,7 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<name>Validator</name>
+	<description>A straigthforward Java api for business validation</description>
+	<url>https://github.com/latitude-oss/validator</url>
 
 	<groupId>cloud.latitude</groupId>
 	<artifactId>validator</artifactId>
@@ -12,6 +16,12 @@
 		<developer>
 			<id>vautiero</id>
 			<name>Vincenzo Autiero</name>
+			<roles>
+				<role>project-leader</role>
+				<role>developer</role>
+			</roles>
+			<organization>Latitude Srls</organization>
+			<organizationUrl>https://www.latitude.cloud</organizationUrl>
 			<email>v.autiero at latitude.cloud</email>
 		</developer>
 	</developers>
@@ -38,6 +48,7 @@
 	</properties>
 
 	<scm>
+		<url>https://github.com/latitude-oss/validator</url>
 		<developerConnection>scm:git:https://github.com/latitude-oss/validator.git</developerConnection>
 		<tag>v1.0.RELEASE</tag>
 	</scm>
@@ -117,6 +128,19 @@
 			</plugin>
 			<!-- <plugin> <groupId>org.sonarsource.scanner.maven</groupId> <artifactId>sonar-maven-plugin</artifactId> 
 				<version>${sonar-maven-plugin.version}</version> </plugin> -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
