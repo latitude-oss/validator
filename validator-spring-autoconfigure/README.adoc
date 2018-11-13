@@ -1,7 +1,6 @@
 = Validator spring autoconfigure
 
-This module integrates the *validation-core* library inside a *SpringFramework* IOC container.
-Provides auto-configuration features and classpath scanning for _Validator_ components. 
+This module integrates the *validation-core* library inside a *SpringFramework* IOC container providing auto-configuration features and classpath scanning for _Validator_ components. 
 
 Add the _**validator-spring-autoconfigure**_ dependency in your maven project's pom as shown below
 [source,xml,indent=2]
