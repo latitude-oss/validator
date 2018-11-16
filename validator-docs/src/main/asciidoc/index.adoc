@@ -1,0 +1,23 @@
+[[validator-reference]]
+= Validator Reference Guide
+Vincenzo Autiero <v.autiero@latitude.cloud>
+:doctype: book
+:toc: macro
+:toclevels: 4
+:source-highlighter: prettify
+:sc-ext: java
+// ======================================================================================
+
+= Validator Core
+
+include::validator-core-overview.adoc[]
+
+= Validator SpringFramework
+
+include::validator-spring-autoconfigure-overview.adoc[]
+
+= Appendices
+
+include::appendices.adoc[]
+
+// ======================================================================================

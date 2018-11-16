@@ -1,0 +1,19 @@
+[appendix]
+Building
+---------
+
+=== Basic Compile and Test
+
+=== Documentation
+
+There is a "full" profile that will generate documentation.
+
+=== Working with the code
+
+If you don’t have an IDE preference we would recommend that you use Eclipse when working with the code.
+
+=== Sign the Contributor License Agreement
+
+Before we accept a non-trivial patch or pull request we will need you to sign the contributor’s agreement. Signing the contributor’s agreement does not grant anyone commit rights to the main repository, but it does mean that we can accept your contributions, and you will get an author credit if we do. Active contributors might be asked to join the core team, and given the ability to merge pull requests.
+
+=== Code Conventions and Housekeeping

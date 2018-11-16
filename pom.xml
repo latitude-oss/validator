@@ -45,6 +45,8 @@
 		<checkstyle.config.location>src/checkstyle/checkstyle.xml</checkstyle.config.location>
 
 		<springframework.version>5.1.2.RELEASE</springframework.version>
+		
+		<github-tag>v1.0.RELEASE</github-tag>
 	</properties>
 
 	<scm>

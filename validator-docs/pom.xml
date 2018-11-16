@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<name>Validator docs</name>
+
+	<parent>
+		<groupId>cloud.latitude</groupId>
+		<artifactId>validator</artifactId>
+		<version>1.0.RELEASE</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>validator-docs</artifactId>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.asciidoctor</groupId>
+				<artifactId>asciidoctor-maven-plugin</artifactId>
+				<version>1.5.3</version>
+				<executions>
+					<execution>
+						<id>generate-docbook</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>process-asciidoc</goal>
+						</goals>
+						<configuration>
+							<sourceDocumentName>index.adoc</sourceDocumentName>
+							<backend>html5</backend>
+							<sourceHighlighter>coderay</sourceHighlighter>
+							<doctype>book</doctype>
+							<attributes>
+								<toc>left</toc>
+								<docinfo>true</docinfo>
+								<sectnums>true</sectnums>
+								<revnumber>${project.version}</revnumber>
+								<!-- <revdate>${maven.build.timestamp}</revdate> -->
+								<organization>${project.organization.name}</organization>
+								<validator-version>${project.version}</validator-version>
+								<validator-docs-version>${project.version}</validator-docs-version>
+								<github-tag>${github-tag}</github-tag>
+								<supported-spring-framework-version>${springframework.version}</supported-spring-framework-version>
+							</attributes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<!-- <dependencies> <dependency> <groupId>cloud.latitude</groupId> <artifactId>validator-core</artifactId> 
+		</dependency> <dependency> <groupId>cloud.latitude</groupId> <artifactId>validator-spring-autoconfigure</artifactId> 
+		</dependency> </dependencies> -->
+
+</project>

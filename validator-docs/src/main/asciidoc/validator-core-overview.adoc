@@ -1,0 +1,130 @@
+== Quick Start
+
+You can try Validator in less then 5 min even before you jump into any details. 
+This chapter shows you how to start quickly and get the validation engine up and running.
+
+=== A sample application 
+
+==== Import the library
+
+Start adding the dependency to your project
+
+.with Maven
+[source,xml,indent=2,subs="verbatim,attributes"]
+----
+<dependency>
+  <groupId>cloud.latitude</groupId>
+  <artifactId>validator-core</artifactId>
+  <version>{validator-version}</version>
+</dependency>
+----
+
+.with Gradle
+[source,json,indent=2,subs="verbatim,attributes"]
+----
+compile 'cloud.latitude:validator-core:{validator-version}'
+----
+
+==== Define a Validator, bulding and running
+
+In the below example, the main class ``Application`` creates an instance of ``ValidationEngine``, 
+defines an example subject ``Foo`` *(5)* and a custom ``FooValidator`` that is responsible to validate the Foo intances.
+
+When the application starts a new ``FooValidator`` is registered on ``ValidationEngine`` *(1)* 
+and the validation process is performed *(2)*.
+
+``ValidationEngine`` elects *(3)* the ``Validator`` that is able to validate the provided subject and delegates 
+to the latter the verification of the validation requirements *(4)*.
+
+A ``ValidationContext`` is returned with the result of the validation.
+
+.Application.java
+[source,java,indent=2]
+----
+
+package com.example;
+
+import com.latitude.validator.spi.ValidationContext;
+import com.latitude.validator.spi.ValidationException;
+import com.latitude.validator.spi.ValidationOperations;
+import com.latitude.validator.spi.impl.AbstractGenericValidator;
+import com.latitude.validator.spi.impl.ValidationEngine;
+
+public class Application {
+
+  private static ValidationOpeartions validationEngine = new ValidationEngine();
+
+  public static void main(String[] args){
+    
+    validationEngine.addValidator(new FooValidator()); // <1>
+
+    ValidationContext context = validationEngine.validate(new Foo("EXPECTED_FOO")); // <2>
+    System.out.println(String.format("Validation finished with the status %s", context.getExitStatus()));
+
+  }
+
+  public static class FooValidator extends AbstractGenericValidator<Foo> {
+
+    public FooValidator(){
+      super("FooValidator");
+    }
+
+    public boolean doSupports(Object subject){ // <3>
+      return Foo.class.isAssignableFrom(subject.getClass());
+    }
+
+    public void doValidation(Foo subject, ValidationContext context) { // <4>
+      if(!"EXPECTED_FOO".equals(subject.getName()){
+          throw new ValidationException("Invalid Foo provided");
+      }
+    }
+
+  }
+
+  public static class Foo { // <5>
+
+    private final String name;
+
+    public Foo(String name){
+      this.name = name;
+    }
+
+    public String getName(){
+      return this.name;
+    }
+
+  }
+
+}
+----
+*(1)* Register the validator.
+
+*(2)* Perform validation.
+
+*(3)* Returns true if the validator is able to perform validation on the subject.
+
+*(4)* Apply the validation constraints to subject.
+
+*(5)* The subject of the validation.
+
+The next chapter goes into more detail about how you can work with Validator.
+It covers topics such as creating and running chain of validators, configure the ``ValidationEngine`` and getting notified on the validators execution.
+
+== Introducing Validator
+
+Validator defines a straigthforward Java api and a meta-model for business validation.
+
+Data validation is a very common task that often is scattered in many different layers of an application. 
+Some times the same validation criteria are implemented more than once, this can be time consuming and error-prone.
+
+== Main concepts
+
+Validator Core provides a number of abstractions and primitives that simplify the writing of the validation criteria.
+
+This section gives an overview of the following:
+
+* The validation engine
+* The validator contract
+* Chaining validators
+* The execution callback
+
